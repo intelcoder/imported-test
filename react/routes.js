@@ -4,9 +4,12 @@ import {
   Home,
 } from 'Pages'
 
+import AgentPage from 'Pages/agents'
+
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
+    <Route exact path="/agents" component={AgentPage} />
   </Switch>
 )
 

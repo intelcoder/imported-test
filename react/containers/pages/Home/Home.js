@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import ToTopOnMount from 'react-to-top-on-mount'
 import SvgIcon from 'Components/SvgIcon'
 import Hero from 'Layout/Hero'
+import { Link } from 'react-router-dom'
 import { NoPaddingGrid } from 'Components/EnhacedFlexboxGrid'
 
 import importedComponent from 'react-imported-component'
@@ -34,6 +35,7 @@ class Home extends Component {
         >
           {this.getHeroContents()}
         </Hero>
+        <Link to={'/agents'}>Link</Link>
 
         <NoPaddingGrid fluid>
           <MarketReport />
