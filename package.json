@@ -1,5 +1,5 @@
 {
-  "name": "RealtyCoreApp",
+  "name": "import-test",
   "engines": {
     "node": ">=8.0"
   },
@@ -16,12 +16,6 @@
     "test": "eslint -c ./config/.eslintrc.js ./react",
     "jest": "jest",
     "generate-imported-component": "imported-components react react/containers/root/stats.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test",
-      "post-merge": "python .git/hooks/post-merge"
-    }
   },
   "dependencies": {
     "autoprefixer": "^7.2.2",
@@ -93,8 +87,6 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-jest": "^22.4.3",
-    "import-inspector": "^2.0.0",
-    "mini-css-extract-plugin": "^0.4.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-dynamic-import-node": "^2.1.0",
     "babel-plugin-import-inspector": "^2.0.0",
@@ -127,13 +119,14 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^0.15.0-rc.9",
     "ignore-loader": "^0.1.2",
+    "import-inspector": "^2.0.0",
     "jest": "^22.4.3",
     "lazysizes": "^4.0.1",
+    "mini-css-extract-plugin": "^0.4.2",
     "mobile-detect": "^1.4.1",
     "postcss-loader": "^2.0.9",
     "postcss-modules-values": "^1.3.0",
     "postcss-nested": "^2.1.2",
-    "puppeteer": "^1.4.0",
     "react-hot-loader": "^3.1.3",
     "redux-devtools": "^3.4.1",
     "redux-devtools-dock-monitor": "^1.1.2",
@@ -144,7 +137,7 @@
     "uglifyjs-webpack-plugin": "^1.2.2",
     "webpack": "^4.1.0",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-cli": "^2.0.10",
+    "webpack-cli": "2.0.10",
     "webpack-dev-middleware": "^3.0.0",
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.2",
