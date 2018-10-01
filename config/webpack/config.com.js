@@ -9,9 +9,7 @@ const development = require('./config.dev.js')
 const production = require('./config.prod.js')
 const aliases = require('../aliases/aliases.js')
 
-const THEME_NAME = 'property'
-const ignores = ['property', 'condos', 'mrloft'].filter(name => THEME_NAME !== name)
-const ignoreRegex = new RegExp(`(${ignores.join('|')}).css`)
+
 
 const distPath = process.env.NODE_ENV === 'production' ? 'dist' : 'dist'
 
@@ -57,13 +55,11 @@ const common = {
           }
         }],
       },
-      { test: ignoreRegex, loader: 'ignore-loader' }
     ]
   },
 
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.WatchIgnorePlugin([/static\/spritesheet\.json$/]),
 
     new SvgToJsonPlugin({
