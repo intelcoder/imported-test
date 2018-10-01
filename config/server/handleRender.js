@@ -5,12 +5,14 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
+import Loadable from 'react-loadable'
+import { getBundles } from 'react-loadable/webpack'
 
 import configureStore from 'Redux/store/configureStoreProd'
 import rootSaga from 'Redux/rootSaga'
-import { printDrainHydrateMarks } from 'react-imported-component'
 import AppRoot from 'Containers/root/AppRoot'
 import { renderDom } from 'Containers/root/html'
+import stats from '../../dist/react-loadable.json'
 
 const handleRender = (req, res) => {
   const port = 3333
@@ -23,11 +25,14 @@ const handleRender = (req, res) => {
   // const history = createHistory()
   const store = configureStore(history, {})
 
+  let modules = []
   const context = {}
   const htmlRoot = (
     <Provider store={store}>
       <StaticRouter location={urlPath} context={context}>
-        <AppRoot />
+        <Loadable.Capture report={moduleName => {modules.push(moduleName)}}>
+          <AppRoot />
+        </Loadable.Capture>
       </StaticRouter>
     </Provider>
   )
@@ -35,19 +40,17 @@ const handleRender = (req, res) => {
     .runSaga(rootSaga)
     .done.then(() => {
       const storeState = store.getState()
-      const RTS = renderToString(htmlRoot) + printDrainHydrateMarks()
+      console.log(modules, getBundles(stats, modules))
+      const RTS = renderToString(htmlRoot)
       const head = Helmet.renderStatic()
-      console.log(printDrainHydrateMarks())
 
-      res.status(200).send(renderDom(RTS, port, host, storeState, head))
+      res.status(200).send(renderDom(RTS, port, host, storeState, head, getBundles(stats, modules)))
     })
     .catch(e => {
       console.log(e.message)
       res.status(500).send(e.message)
     })
-
   renderToString(htmlRoot)
-  console.log(printDrainHydrateMarks())
 
   store.close()
 }

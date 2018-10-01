@@ -3,11 +3,12 @@
 
 
 const pkgVersion = require('../../../package.json').version
-export const renderDom = (html, devPort, domain, initialState = null, head) => {
+export const renderDom = (html, devPort, domain, initialState = null, head, bundles) => {
   const isProduction = process.env.NODE_ENV === 'production'
   const jsExt = isProduction ? '.js' : '.js'
   const cssExt = isProduction ? '.css' : '.css'
-
+  const bds = bundles ? bundles.map(bundle => {if(bundle)return `<script src="/dist/${bundle.file}"></script>`}).join(' ') : ' '
+  console.log(bds)
   return `
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -31,6 +32,7 @@ export const renderDom = (html, devPort, domain, initialState = null, head) => {
 
         <script src="/dist/main${jsExt}"></script>
         <script src="/dist/styles${jsExt}"></script>
+         ${bds}
       </body>
     </html>
   `

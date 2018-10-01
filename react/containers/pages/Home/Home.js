@@ -5,12 +5,18 @@ import SvgIcon from 'Components/SvgIcon'
 import Hero from 'Layout/Hero'
 import { NoPaddingGrid } from 'Components/EnhacedFlexboxGrid'
 
-import importedComponent from 'react-imported-component'
+import Loadable from 'react-loadable'
 
 
 import css from './styles.css'
 
-const MarketReport = importedComponent(() => import(/* webpackChunkName:'MarketReport' */'./sections/MarketReport'))
+const MarketReport = Loadable({
+  loader: () => import('./sections/MarketReport'),
+  loading: () => {
+    return <div>Loading...</div>
+  }
+})
+
 
 class Home extends Component {
 

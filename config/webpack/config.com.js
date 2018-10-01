@@ -52,7 +52,7 @@ const common = {
               'transform-decorators-legacy',
               'transform-runtime',
               'syntax-dynamic-import',
-              'react-imported-component/babel',
+              'react-loadable/babel',
             ]
           }
         }],

@@ -1,5 +1,6 @@
 import Express from 'express'
 import handleRender from './handleRender'
+import Loadable from 'react-loadable'
 var compression = require('compression')
 global.window = undefined
 global.document = {}
@@ -42,8 +43,9 @@ app.get('/favicon.ico', function(req, res) {
     res.sendStatus(204)
 })
 app.use(handleRender)
-app.listen(3333, (error) => {
-  if (error) console.error(error)
-  else console.info(`App: listening on port ${3333}. Open up https://localhost:${3333}/ in your browser.`)
+Loadable.preloadAll().then(() => {
+  app.listen(3333, (error) => {
+    if(error) console.error(error)
+    else console.info(`App: listening on port ${3333}. Open up https://localhost:${3333}/ in your browser.`)
+  })
 })
-

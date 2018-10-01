@@ -2,6 +2,7 @@
 const CWD = process.cwd()
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const Loadable = require('react-loadable/webpack')
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
@@ -64,5 +65,8 @@ module.exports = {
     //   minRatio: 0.8,
     //   deleteOriginalAssets: true,
     // }),
+    new Loadable.ReactLoadablePlugin({
+      filename: './dist/react-loadable.json',
+    }),
   ]
 }
