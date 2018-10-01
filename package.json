@@ -17,12 +17,6 @@
     "jest": "jest",
     "generate-imported-component": "imported-components react react/containers/root/stats.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test",
-      "post-merge": "python .git/hooks/post-merge"
-    }
-  },
   "dependencies": {
     "autoprefixer": "^7.2.2",
     "babel-register": "^6.26.0",
