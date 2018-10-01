@@ -36,6 +36,15 @@ const common = {
     splitChunks: {
       maxAsyncRequests: 20,
       maxInitialRequests: 20,
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+          reuseExistingChunk: true
+        },
+      }
     }
   },
 
