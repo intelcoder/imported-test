@@ -7,8 +7,6 @@ import { history, store } from 'Redux/store'
 import rootSaga from 'Redux/rootSaga'
 import AppRoot from './AppRoot'
 
-import './stats'
-
 
 store.runSaga(rootSaga)
 const domRoot = document.getElementById('root')

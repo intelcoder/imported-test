@@ -6,7 +6,6 @@
     ["babel-plugin-webpack-alias", {"config": "${PWD}/config/aliases/aliases.config.js"}],
     "transform-decorators-legacy",
     "transform-runtime",
-    "react-imported-component/babel"
+    "react-loadable/babel"
   ]
 }
-

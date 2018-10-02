@@ -1,10 +1,11 @@
-/*/ ENV VARS /*/
+/*  ENV VARS */
 const CWD = process.cwd()
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Loadable = require('react-loadable/webpack')
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 module.exports = {
   mode: 'production',
   devtool: false,
@@ -68,5 +69,5 @@ module.exports = {
     new Loadable.ReactLoadablePlugin({
       filename: './dist/react-loadable.json',
     }),
-  ]
+  ],
 }
